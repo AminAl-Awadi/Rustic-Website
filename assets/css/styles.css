@@ -637,7 +637,10 @@ button { font: inherit; color: inherit; }
   top: 0;
   height: 100dvh;
   display: flex;
-  align-items: center;
+  /* safe center: يتوسّط ما دام المحتوى أقصر من الشاشة، وحين يطول (العنوان
+     الإنجليزي أربعة أسطر) ينحاز للأعلى بدل أن يخرج نصفه فوق الشاشة تحت
+     الشريط الثابت — وهو ما كان يحدث: السطر الأول محجوب. */
+  align-items: safe center;
   overflow: hidden;
 }
 
@@ -731,7 +734,9 @@ button { font: inherit; color: inherit; }
    الكتلة العامة أسفل الملف. */
 
 .hero__title {
-  font-size: clamp(44px, 9vw, 116px);
+  /* السقف 96px لا 116px: الإنجليزية ثلاث كلمات في السطر، فعند 116px يلتفّ
+     العنوان أربعة أسطر ويتجاوز الشاشة. العربية قصيرة ولا تتأثر. */
+  font-size: clamp(44px, 8vw, 96px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
