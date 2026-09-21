@@ -1555,6 +1555,12 @@ body.is-locked { overflow: hidden; }
     radial-gradient(ellipse 50% 58% at 84% 78%, var(--glow-cool), transparent 66%);
 }
 
+/* شعار الفوتر بحجم شعار الشريط. واسم المؤسسة بلون النص لا الشعار:
+   --nav-fg غير معرّف خارج الشريط فكان النص يرث أحمر الشعار — والأحمر
+   للشعار وحده. */
+.footer .nav__brand svg { width: 56px; height: 56px; }
+.footer .nav__brand-text { color: var(--fg); }
+
 .footer > .container {
   position: relative;
   z-index: 1;
