@@ -695,7 +695,42 @@ button { font: inherit; color: inherit; }
     linear-gradient(to top, rgba(var(--scrim-rgb), 0.30) 0%, transparent 28%);
 }
 
-/* الجوال: النص يملأ العرض، فالبركة تتمدّد لتغطيه */
+/* ==========================================================================
+   الجوال: المشهد كاملاً فوق، والنص تحته على لوح داكن
+
+   الإطارات 16:9 والشاشة طولية، فـ object-fit: cover كان يُظهر شريط
+   المنتصف فقط ويقصّ البيت من الجانبين. الحلّ ليس contain (شرائط فارغة
+   فوق وتحت) بل تغيير التركيب: الصورة كتلة بنسبتها الحقيقية في أعلى
+   المسرح، والنص تحتها لا فوقها.
+
+   اللوح تحت الصورة بلون الحجاب الداكن الثابت عمداً: نص الهيرو لونه
+   --on-scrim (فاتح ثابت) ولا يتبع الثيم — فلو وقع على --bg الفاتح لرسب.
+   على الحجاب الداكن تباينه أعلى من أي قياس سابق. والحجاب المتدرّج يُلغى
+   لأنه لم يعد فوق نصّ. */
+@media (max-width: 767px) {
+  .hero__stage {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-top: 88px; /* ارتفاع الشريط الثابت — بدونه يقع أعلى المشهد تحته */
+    background: rgb(var(--scrim-rgb));
+  }
+
+  .hero__video {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    flex: none;
+  }
+
+  .hero__scrim { display: none; }
+
+  .hero__content { padding-block: var(--space-5) var(--space-6); }
+}
+
+/* الجوال (احتياط للمتصفّحات التي لا تطبّق الكتلة أعلاه): البركة تتمدّد */
 @media (max-width: 767px) {
   .hero__scrim {
     background:
