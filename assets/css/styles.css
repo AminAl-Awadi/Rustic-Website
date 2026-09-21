@@ -788,10 +788,9 @@ button { font: inherit; color: inherit; }
   color: var(--on-scrim);
 }
 
-/* أحمر فاتح فوق الحجاب. سطوعه 0.5177 ≥ سطوع الذهبي السابق 0.5057 الذي
-   قِيس عنده 7.34:1 على أسوأ إطار — فالقيمة محفوظة كحدّ أدنى. أحمر أشبع
-   من هذا أغمق، فيكسر الضمان. */
-.hero__content .eyebrow { color: #ffa89f; }
+/* نصّ الهيرو كلّه أبيض بقرار المالك — لا لون تمييز. الأبيض #f5f1ea
+   أسطع من أي لون مميّز سابق (0.87 مقابل 0.51) فقياسات الحجاب محفوظة. */
+.hero__content .eyebrow { color: var(--on-scrim); }
 
 /* ملاحظة مقصودة: المشهد لا يُعطَّل مع prefers-reduced-motion.
    السبب أنه لا يتحرك من تلقاء نفسه إطلاقاً — يتقدّم بمقدار ما يمرّر
@@ -810,7 +809,7 @@ button { font: inherit; color: inherit; }
 
 .hero__title em {
   font-style: normal;
-  color: #ffa89f;
+  color: var(--on-scrim);
 }
 
 .hero__sub {
