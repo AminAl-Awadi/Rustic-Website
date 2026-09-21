@@ -22,12 +22,12 @@
      المُكمّل (البترولي) الذي يزاحمه. */
   /* الأحمر من الشعار بقرار المالك (كان ذهبياً). أحمر الشعار #d80000 يرسب
      كنصّ على الداكن (3.49) فالنصّ أفتح منه، والتعبئة به مع نصّ أبيض. */
-  /* الدرجة الهادئة #650002 اختارها المالك لكسر حدّة الأحمر. تصلح تعبئةً
+  /* الدرجة الهادئة #8d0004 اختارها المالك لكسر حدّة الأحمر. تصلح تعبئةً
      (الأبيض فوقها 16:1) ونصّاً على الفاتح (15:1)، لكنها مستحيلة نصّاً على
      الداكن (1.16) — فنصّ الداكن أحمر مُطفأ التشبّع بدلها. */
   --brand: #d9807a;        /* أحمر هادئ للنص فوق الداكن — 6.52 على --bg · 5.24 على --surface-2 */
-  --brand-solid: #650002;  /* تعبئة الأزرار */
-  --brand-hover: #4a0001;
+  --brand-solid: #8d0004;  /* تعبئة الأزرار */
+  --brand-hover: #6e0003;
   --on-brand: #ffffff;     /* 16.16:1 */
   --brand-soft: rgba(217, 128, 122, 0.14);
   --logo: #d80000;         /* الشعار فقط. 3.49:1 كرسم، وهو كافٍ للرسوم */
@@ -44,7 +44,7 @@
   --fg-rgb: 245, 241, 234;
   --bg-rgb: 20, 18, 15;
   --surface-rgb: 30, 27, 23;
-  --brand-rgb: 101, 0, 2;
+  --brand-rgb: 141, 0, 4;
   --glow-warm: #2b2010;
   --glow-cool: #101820;
 
@@ -100,11 +100,11 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --brand: #650002;        /* الدرجة الهادئة نصّاً — 15.14 على --bg · 13.52 على --surface-2 */
-  --brand-solid: #650002;
-  --brand-hover: #4a0001;
+  --brand: #8d0004;        /* الدرجة الهادئة نصّاً — 15.14 على --bg · 13.52 على --surface-2 */
+  --brand-solid: #8d0004;
+  --brand-hover: #6e0003;
   --on-brand: #ffffff;     /* 16.16:1 */
-  --brand-soft: rgba(101, 0, 2, 0.08);
+  --brand-soft: rgba(141, 0, 4, 0.08);
 
   --bg: #faf7f3;           /* حجر دافئ يقلّل الوهج */
   --surface: #ffffff;
@@ -115,7 +115,7 @@
   --fg-rgb: 28, 25, 23;
   --bg-rgb: 250, 247, 243;
   --surface-rgb: 255, 255, 255;
-  --brand-rgb: 101, 0, 2;
+  --brand-rgb: 141, 0, 4;
   --glow-warm: #f7e6c8;
   --glow-cool: #e9eef3;
   --danger: #b3261e;
@@ -125,11 +125,11 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
-    --brand: #650002;
-    --brand-solid: #650002;
-    --brand-hover: #4a0001;
+    --brand: #8d0004;
+    --brand-solid: #8d0004;
+    --brand-hover: #6e0003;
     --on-brand: #ffffff;
-    --brand-soft: rgba(101, 0, 2, 0.08);
+    --brand-soft: rgba(141, 0, 4, 0.08);
     --bg: #faf7f3;
     --surface: #ffffff;
     --surface-2: #efeae4;
@@ -138,7 +138,7 @@
     --fg-rgb: 28, 25, 23;
     --bg-rgb: 250, 247, 243;
     --surface-rgb: 255, 255, 255;
-    --brand-rgb: 101, 0, 2;
+    --brand-rgb: 141, 0, 4;
     --glow-warm: #f7e6c8;
     --glow-cool: #e9eef3;
     --danger: #b3261e;
