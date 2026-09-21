@@ -1558,8 +1558,9 @@ body.is-locked { overflow: hidden; }
 /* شعار الفوتر بحجم شعار الشريط. واسم المؤسسة بلون النص لا الشعار:
    --nav-fg غير معرّف خارج الشريط فكان النص يرث أحمر الشعار — والأحمر
    للشعار وحده. */
-.footer .nav__brand svg { width: 76px; height: 76px; }
-.footer .nav__brand-text { color: var(--fg); }
+.footer .nav__brand { gap: 16px; }
+.footer .nav__brand svg { width: 80px; height: 80px; flex: none; }
+.footer .nav__brand-text { color: var(--fg); font-size: 26px; white-space: normal; }
 
 .footer > .container {
   position: relative;
