@@ -276,6 +276,20 @@ button { font: inherit; color: inherit; }
   background: currentColor;
 }
 
+/* 🪤 letter-spacing يفكّك العربية. الحروف العربية متّصلة، وأي تباعد موجب
+   يفصلها فتظهر «م ق ا و ل ا ت» — بدت مقطّعة على الجوال فعلاً. والتباعد
+   السالب على العناوين يُلصق الحروف فوق بعضها. يُصفَّر كلّه في RTL ويبقى
+   للإنجليزية حيث يُحسّن الحروف الكبيرة المتباعدة. */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .reveal__tag,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] .hero__title {
+  letter-spacing: 0;
+}
+
 .section-title {
   font-size: clamp(34px, 5.4vw, 60px);
   max-width: 20ch;
