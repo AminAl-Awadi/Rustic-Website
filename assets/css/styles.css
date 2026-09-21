@@ -758,18 +758,6 @@ button { font: inherit; color: inherit; }
     linear-gradient(to top, rgba(var(--scrim-rgb), 0.30) 0%, transparent 28%);
 }
 
-@media (max-width: 767px) {
-  [dir="ltr"] .hero__scrim {
-    background:
-      radial-gradient(ellipse 95% 80% at 50% 52%,
-        rgba(var(--scrim-rgb), 0.90) 0%,
-        rgba(var(--scrim-rgb), 0.90) 55%,
-        rgba(var(--scrim-rgb), 0.41) 85%,
-        transparent 130%),
-      linear-gradient(to top, rgba(var(--scrim-rgb), 0.34) 0%, transparent 30%);
-  }
-}
-
 .hero__content {
   position: relative;
   z-index: 1;
