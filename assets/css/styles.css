@@ -653,11 +653,14 @@ button { font: inherit; color: inherit; }
   width: min(50vw, 320px);
   min-width: 250px;
   padding: calc(88px + var(--space-4)) 24px calc(var(--space-6) + env(safe-area-inset-bottom));
-  background: rgba(var(--bg-rgb), 0.82);
-  backdrop-filter: blur(34px) saturate(170%);
-  -webkit-backdrop-filter: blur(34px) saturate(170%);
+  /* زجاج مرئي لا شبه مصمت. 0.58 مقاسة: الدرج قد يُفتح فوق سماء المشهد
+     rgb(221,215,205)، وهناك نص القائمة في الثيم الداكن 5.2 (الحدّ 4.5).
+     عند 0.50 ينزل إلى 4.10. الثيم الفاتح مرتاح (14+) في كل الحالات. */
+  background: rgba(var(--bg-rgb), 0.58);
+  backdrop-filter: blur(40px) saturate(190%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%);
   border-inline-start: 1px solid var(--glass-edge);
-  box-shadow: 0 0 48px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--glass-sheen), 0 0 48px rgba(0, 0, 0, 0.25);
   align-content: start;
   transform: translateX(100%);
   transition: transform var(--dur-slow) var(--ease-out);
@@ -1741,5 +1744,5 @@ body.is-locked { overflow: hidden; }
   .field select { background: var(--surface); }
 
   .stat { background: var(--surface); }
-  .mobile-menu { background: var(--bg); }
+  .mobile-menu nav { background: var(--bg); }
 }
