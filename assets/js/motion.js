@@ -52,13 +52,14 @@
     );
   }
 
-  const menuClose = document.getElementById("menuClose");
-  if (menuClose) {
-    menuClose.addEventListener("click", () => {
+  /* نقرة على الخلفية خارج الدرج تُغلق. نقرة داخل الدرج لا تصل هنا لأن
+     الهدف ليس الغطاء نفسه. */
+  menu.addEventListener("click", (e) => {
+    if (e.target === menu) {
       setMenu(false);
-      burger.focus(); // يعود التركيز حيث بدأ
-    });
-  }
+      burger.focus();
+    }
+  });
 
   burger.addEventListener("click", () => {
     setMenu(burger.getAttribute("aria-expanded") !== "true");

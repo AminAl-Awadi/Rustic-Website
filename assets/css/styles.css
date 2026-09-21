@@ -626,45 +626,50 @@ button { font: inherit; color: inherit; }
 .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* قائمة الجوال */
+/* درج جانبي على نصف الشاشة لا غطاء كامل. الخلفية المعتمة خارج الدرج
+   هي زر الإغلاق: نقرة عليها تُغلق — بلا زر ✕. الدرج ينزلق من الجهة التي
+   فيها زر القائمة (inline-end) فيخرج من تحت الإبهام الذي فتحه. */
 .mobile-menu {
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
+  background: rgba(var(--scrim-rgb), 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-base) ease, visibility 0s linear var(--dur-base);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--dur-base) ease;
+}
+
+.mobile-menu nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-end: 0;
+  width: min(50vw, 320px);
+  min-width: 250px;
+  padding: calc(88px + var(--space-4)) 24px calc(var(--space-6) + env(safe-area-inset-bottom));
   background: rgba(var(--bg-rgb), 0.82);
   backdrop-filter: blur(34px) saturate(170%);
   -webkit-backdrop-filter: blur(34px) saturate(170%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--space-7) 28px calc(var(--space-7) + env(safe-area-inset-bottom));
-  transform: translateY(-100%);
+  border-inline-start: 1px solid var(--glass-edge);
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.25);
+  align-content: start;
+  transform: translateX(100%);
   transition: transform var(--dur-slow) var(--ease-out);
-  visibility: hidden;
 }
 
-.mobile-menu.is-open { transform: translateY(0); visibility: visible; }
+[dir="rtl"] .mobile-menu nav { transform: translateX(-100%); }
 
-.mobile-menu__close {
-  position: absolute;
-  top: 20px;
-  inset-inline-start: 20px; /* نفس موضع زر الفتح في الشريط */
-  width: 50px;
-  height: 50px;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  background: transparent;
-  border: 1px solid rgba(var(--fg-rgb), 0.32);
-  border-radius: var(--radius);
-  color: var(--fg);
-  cursor: pointer;
-}
-
-.mobile-menu__close svg { width: 26px; height: 26px; }
+.mobile-menu.is-open nav { transform: translateX(0); }
 
 .mobile-menu a {
   font-family: "Readex Pro", sans-serif;
-  font-size: clamp(30px, 8vw, 44px);
+  font-size: clamp(22px, 5.5vw, 28px);
   font-weight: 600;
   padding-block: 14px;
   border-bottom: 1px solid rgba(var(--fg-rgb), 0.1);
