@@ -622,6 +622,24 @@ button { font: inherit; color: inherit; }
 
 .mobile-menu.is-open { transform: translateY(0); visibility: visible; }
 
+.mobile-menu__close {
+  position: absolute;
+  top: 20px;
+  inset-inline-start: 20px; /* نفس موضع زر الفتح في الشريط */
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(var(--fg-rgb), 0.32);
+  border-radius: var(--radius);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.mobile-menu__close svg { width: 26px; height: 26px; }
+
 .mobile-menu a {
   font-family: "Readex Pro", sans-serif;
   font-size: clamp(30px, 8vw, 44px);

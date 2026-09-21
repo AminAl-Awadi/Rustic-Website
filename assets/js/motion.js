@@ -52,6 +52,14 @@
     );
   }
 
+  const menuClose = document.getElementById("menuClose");
+  if (menuClose) {
+    menuClose.addEventListener("click", () => {
+      setMenu(false);
+      burger.focus(); // يعود التركيز حيث بدأ
+    });
+  }
+
   burger.addEventListener("click", () => {
     setMenu(burger.getAttribute("aria-expanded") !== "true");
   });

@@ -34,6 +34,7 @@ const I18N = {
     "a11y.wa": "تواصل عبر واتساب",
     "a11y.close": "إغلاق",
     "a11y.compare": "اسحب لمقارنة التشطيبين",
+    "a11y.closeMenu": "إغلاق القائمة",
     "a11y.theme": "تبديل بين الوضع الفاتح والداكن",
 
     "nav.about": "من نحن",
@@ -162,6 +163,7 @@ const I18N = {
     "a11y.wa": "Contact us on WhatsApp",
     "a11y.close": "Close",
     "a11y.compare": "Drag to compare the two finishes",
+    "a11y.closeMenu": "Close menu",
     "a11y.theme": "Toggle light and dark mode",
 
     "nav.about": "About",
