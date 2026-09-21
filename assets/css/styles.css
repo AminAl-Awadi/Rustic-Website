@@ -572,6 +572,28 @@ button { font: inherit; color: inherit; }
   :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: block; }
 }
 
+/* الشاشات الضيّقة: الأزرار أولاً والاسم يتنازل. بدون هذا يدفع الاسم
+   الطويل أزرار الثيم واللغة والقائمة خارج الشاشة فتختفي. */
+.nav__brand { min-width: 0; }
+.nav__actions { flex: none; }
+
+@media (max-width: 479px) {
+  .nav__inner { gap: var(--space-2); }
+  .nav__brand { gap: 8px; }
+  .nav__brand svg { width: 44px; height: 44px; flex: none; }
+  .nav__brand-text { font-size: 17px; overflow: hidden; text-overflow: ellipsis; }
+  .nav__actions { gap: 8px; }
+  .lang-toggle { min-width: 52px; min-height: 44px; padding-inline: 10px; font-size: 14px; }
+  .theme-toggle { width: 44px; height: 44px; }
+  .theme-toggle svg { width: 22px; height: 22px; }
+  .burger { width: 44px; height: 44px; padding: 0 9px; }
+}
+
+/* أضيق من ذلك: الشعار وحده يكفي هوية — الاسم يُخفى لا الأزرار */
+@media (max-width: 359px) {
+  .nav__brand-text { display: none; }
+}
+
 .nav__cta { display: none; }
 @media (min-width: 768px) { .nav__cta { display: inline-flex; min-height: 50px; padding-inline: 26px; font-size: 16px; } }
 
