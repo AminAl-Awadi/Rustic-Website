@@ -20,11 +20,13 @@
      محايد دافئ يحمل الواجهة + لمسة ذهبية واحدة للتأكيد.
      الذهبي جار للأحمر على عجلة الألوان فينسجم مع الشعار، بخلاف
      المُكمّل (البترولي) الذي يزاحمه. */
-  --brand: #e0a441;        /* ذهبي فاتح: نص وخطوط فوق الداكن (8.51:1) */
-  --brand-solid: #d99a2b;  /* تعبئة الأزرار */
-  --brand-hover: #c98a1f;
-  --on-brand: #14120f;     /* نص الزر — داكن فوق الذهبي الفاتح (7.66:1) */
-  --brand-soft: rgba(224, 164, 65, 0.14);
+  /* الأحمر من الشعار بقرار المالك (كان ذهبياً). أحمر الشعار #d80000 يرسب
+     كنصّ على الداكن (3.49) فالنصّ أفتح منه، والتعبئة به مع نصّ أبيض. */
+  --brand: #ff6b60;        /* نص وخطوط فوق الداكن — 6.70 على --bg · 5.38 على --surface-2 */
+  --brand-solid: #d80000;  /* تعبئة الأزرار — أحمر الشعار نفسه */
+  --brand-hover: #b80000;
+  --on-brand: #ffffff;     /* الأبيض فوق أحمر الشعار — 5.36:1 */
+  --brand-soft: rgba(255, 107, 96, 0.14);
   --logo: #d80000;         /* الشعار فقط. 3.49:1 كرسم، وهو كافٍ للرسوم */
 
   /* ---- الأسطح والنص: محايد دافئ لا رمادي بارد ---- */
@@ -39,7 +41,7 @@
   --fg-rgb: 245, 241, 234;
   --bg-rgb: 20, 18, 15;
   --surface-rgb: 30, 27, 23;
-  --brand-rgb: 217, 154, 43;
+  --brand-rgb: 216, 0, 0;
   --glow-warm: #2b2010;
   --glow-cool: #101820;
 
@@ -95,11 +97,11 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --brand: #8a5a0b;        /* ذهبي عميق للنص فوق الفاتح (5.54:1) */
-  --brand-solid: #8a5a0b;
-  --brand-hover: #6e470a;
-  --on-brand: #ffffff;     /* الأبيض فوق الذهبي العميق (5.92:1) */
-  --brand-soft: rgba(138, 90, 11, 0.1);
+  --brand: #c40000;        /* أحمر أعمق قليلاً من الشعار: 5.87 على --bg · 5.25 على --surface-2 (الشعار نفسه 4.48 يرسب هناك) */
+  --brand-solid: #d80000;
+  --brand-hover: #b30000;
+  --on-brand: #ffffff;     /* 5.36:1 */
+  --brand-soft: rgba(216, 0, 0, 0.08);
 
   --bg: #faf7f3;           /* حجر دافئ يقلّل الوهج */
   --surface: #ffffff;
@@ -110,7 +112,7 @@
   --fg-rgb: 28, 25, 23;
   --bg-rgb: 250, 247, 243;
   --surface-rgb: 255, 255, 255;
-  --brand-rgb: 138, 90, 11;
+  --brand-rgb: 216, 0, 0;
   --glow-warm: #f7e6c8;
   --glow-cool: #e9eef3;
   --danger: #b3261e;
@@ -120,11 +122,11 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
-    --brand: #8a5a0b;
-    --brand-solid: #8a5a0b;
-    --brand-hover: #6e470a;
+    --brand: #c40000;
+    --brand-solid: #d80000;
+    --brand-hover: #b30000;
     --on-brand: #ffffff;
-    --brand-soft: rgba(138, 90, 11, 0.1);
+    --brand-soft: rgba(216, 0, 0, 0.08);
     --bg: #faf7f3;
     --surface: #ffffff;
     --surface-2: #efeae4;
@@ -133,7 +135,7 @@
     --fg-rgb: 28, 25, 23;
     --bg-rgb: 250, 247, 243;
     --surface-rgb: 255, 255, 255;
-    --brand-rgb: 138, 90, 11;
+    --brand-rgb: 216, 0, 0;
     --glow-warm: #f7e6c8;
     --glow-cool: #e9eef3;
     --danger: #b3261e;
@@ -786,7 +788,10 @@ button { font: inherit; color: inherit; }
   color: var(--on-scrim);
 }
 
-.hero__content .eyebrow { color: #e8b45c; } /* ذهبي فاتح فوق الحجاب — 7.34:1 على أسوأ إطار */
+/* أحمر فاتح فوق الحجاب. سطوعه 0.5177 ≥ سطوع الذهبي السابق 0.5057 الذي
+   قِيس عنده 7.34:1 على أسوأ إطار — فالقيمة محفوظة كحدّ أدنى. أحمر أشبع
+   من هذا أغمق، فيكسر الضمان. */
+.hero__content .eyebrow { color: #ffa89f; }
 
 /* ملاحظة مقصودة: المشهد لا يُعطَّل مع prefers-reduced-motion.
    السبب أنه لا يتحرك من تلقاء نفسه إطلاقاً — يتقدّم بمقدار ما يمرّر
@@ -805,7 +810,7 @@ button { font: inherit; color: inherit; }
 
 .hero__title em {
   font-style: normal;
-  color: #e8b45c;
+  color: #ffa89f;
 }
 
 .hero__sub {
