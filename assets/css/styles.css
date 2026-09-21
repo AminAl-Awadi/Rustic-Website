@@ -633,7 +633,9 @@ button { font: inherit; color: inherit; }
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
-  background: rgba(var(--scrim-rgb), 0.45);
+  /* غطاء خفيف جداً: وظيفته التقاط النقر خارج الدرج لا إظلام الصفحة —
+     الدرج الزجاجي واضح بذاته بحافته وظلّه. */
+  background: rgba(var(--scrim-rgb), 0.12);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--dur-base) ease, visibility 0s linear var(--dur-base);
