@@ -22,11 +22,14 @@
      المُكمّل (البترولي) الذي يزاحمه. */
   /* الأحمر من الشعار بقرار المالك (كان ذهبياً). أحمر الشعار #d80000 يرسب
      كنصّ على الداكن (3.49) فالنصّ أفتح منه، والتعبئة به مع نصّ أبيض. */
-  --brand: #ff6b60;        /* نص وخطوط فوق الداكن — 6.70 على --bg · 5.38 على --surface-2 */
-  --brand-solid: #d80000;  /* تعبئة الأزرار — أحمر الشعار نفسه */
-  --brand-hover: #b80000;
-  --on-brand: #ffffff;     /* الأبيض فوق أحمر الشعار — 5.36:1 */
-  --brand-soft: rgba(255, 107, 96, 0.14);
+  /* الدرجة الهادئة #4b0000 اختارها المالك لكسر حدّة الأحمر. تصلح تعبئةً
+     (الأبيض فوقها 16:1) ونصّاً على الفاتح (15:1)، لكنها مستحيلة نصّاً على
+     الداكن (1.16) — فنصّ الداكن أحمر مُطفأ التشبّع بدلها. */
+  --brand: #d9807a;        /* أحمر هادئ للنص فوق الداكن — 6.52 على --bg · 5.24 على --surface-2 */
+  --brand-solid: #4b0000;  /* تعبئة الأزرار */
+  --brand-hover: #360000;
+  --on-brand: #ffffff;     /* 16.16:1 */
+  --brand-soft: rgba(217, 128, 122, 0.14);
   --logo: #d80000;         /* الشعار فقط. 3.49:1 كرسم، وهو كافٍ للرسوم */
 
   /* ---- الأسطح والنص: محايد دافئ لا رمادي بارد ---- */
@@ -41,7 +44,7 @@
   --fg-rgb: 245, 241, 234;
   --bg-rgb: 20, 18, 15;
   --surface-rgb: 30, 27, 23;
-  --brand-rgb: 216, 0, 0;
+  --brand-rgb: 75, 0, 0;
   --glow-warm: #2b2010;
   --glow-cool: #101820;
 
@@ -97,11 +100,11 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --brand: #c40000;        /* أحمر أعمق قليلاً من الشعار: 5.87 على --bg · 5.25 على --surface-2 (الشعار نفسه 4.48 يرسب هناك) */
-  --brand-solid: #d80000;
-  --brand-hover: #b30000;
-  --on-brand: #ffffff;     /* 5.36:1 */
-  --brand-soft: rgba(216, 0, 0, 0.08);
+  --brand: #4b0000;        /* الدرجة الهادئة نصّاً — 15.14 على --bg · 13.52 على --surface-2 */
+  --brand-solid: #4b0000;
+  --brand-hover: #360000;
+  --on-brand: #ffffff;     /* 16.16:1 */
+  --brand-soft: rgba(75, 0, 0, 0.08);
 
   --bg: #faf7f3;           /* حجر دافئ يقلّل الوهج */
   --surface: #ffffff;
@@ -112,7 +115,7 @@
   --fg-rgb: 28, 25, 23;
   --bg-rgb: 250, 247, 243;
   --surface-rgb: 255, 255, 255;
-  --brand-rgb: 216, 0, 0;
+  --brand-rgb: 75, 0, 0;
   --glow-warm: #f7e6c8;
   --glow-cool: #e9eef3;
   --danger: #b3261e;
@@ -122,11 +125,11 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
-    --brand: #c40000;
-    --brand-solid: #d80000;
-    --brand-hover: #b30000;
+    --brand: #4b0000;
+    --brand-solid: #4b0000;
+    --brand-hover: #360000;
     --on-brand: #ffffff;
-    --brand-soft: rgba(216, 0, 0, 0.08);
+    --brand-soft: rgba(75, 0, 0, 0.08);
     --bg: #faf7f3;
     --surface: #ffffff;
     --surface-2: #efeae4;
@@ -135,7 +138,7 @@
     --fg-rgb: 28, 25, 23;
     --bg-rgb: 250, 247, 243;
     --surface-rgb: 255, 255, 255;
-    --brand-rgb: 216, 0, 0;
+    --brand-rgb: 75, 0, 0;
     --glow-warm: #f7e6c8;
     --glow-cool: #e9eef3;
     --danger: #b3261e;
