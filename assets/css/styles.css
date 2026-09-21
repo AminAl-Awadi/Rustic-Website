@@ -653,10 +653,10 @@ button { font: inherit; color: inherit; }
   width: min(50vw, 320px);
   min-width: 250px;
   padding: calc(88px + var(--space-4)) 24px calc(var(--space-6) + env(safe-area-inset-bottom));
-  /* زجاج مرئي لا شبه مصمت. 0.58 مقاسة: الدرج قد يُفتح فوق سماء المشهد
-     rgb(221,215,205)، وهناك نص القائمة في الثيم الداكن 5.2 (الحدّ 4.5).
-     عند 0.50 ينزل إلى 4.10. الثيم الفاتح مرتاح (14+) في كل الحالات. */
-  background: rgba(var(--bg-rgb), 0.58);
+  /* ⚠️ 0.28 بنسبة الهيدر بقرار المالك. فوق سماء المشهد rgb(221,215,205)
+     يعطي نص القائمة في الثيم الداكن ~2.4 (الحدّ 4.5)؛ الحدّ الناجح كان
+     0.58 (5.2). الثيم الفاتح مرتاح في كل الحالات. */
+  background: rgba(var(--bg-rgb), 0.28);
   backdrop-filter: blur(40px) saturate(190%);
   -webkit-backdrop-filter: blur(40px) saturate(190%);
   border-inline-start: 1px solid var(--glass-edge);
