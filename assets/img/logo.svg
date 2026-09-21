@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1240" role="img" aria-label="مؤسسة لون">
+  <title>مؤسسة لون</title>
+  <g fill="currentColor">
+    <!-- النقطة العلوية -->
+    <circle cx="441" cy="243" r="68"/>
+    <!-- العمود الطويل -->
+    <rect x="858" y="172" width="103" height="595"/>
+    <!-- الكتل السفلية -->
+    <rect x="343" y="520" width="104" height="455"/>
+    <rect x="470" y="520" width="100" height="455"/>
+    <!-- نصف الدائرة -->
+    <path d="M713 520v250h-3a125 125 0 0 1 0-250z"/>
+    <rect x="733" y="520" width="100" height="470"/>
+  </g>
+</svg>

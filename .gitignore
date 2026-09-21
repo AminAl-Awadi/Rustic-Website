@@ -1,0 +1,8 @@
+# مصادر لا تُرفع للموقع — تبقى محلياً فقط
+assets/frames_backup_wm/
+assets/video/
+WhatsApp Image*.jpeg
+.claude/
+.vercel/
+Thumbs.db
+.DS_Store

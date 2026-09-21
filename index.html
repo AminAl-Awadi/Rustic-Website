@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title">مؤسسة لون للمقاولات العامة — متخصصون في الدهانات</title>
+<meta name="description" data-i18n-attr="content" data-i18n="meta.desc"
+      content="مؤسسة لون للمقاولات العامة — دهانات داخلية وخارجية، ديكورات وتشطيبات، جبس بورد، لياسة وترميم. جودة تنفيذ وتسليم في الموعد.">
+<meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf7f3" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- يُضاف قبل الرسم فيمنع وميض العناصر قبل أن تختفي استعداداً للحركة.
+     motion.js يزيله فوراً إن فشل تحميل GSAP. -->
+<script>
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js-motion");
+  }
+  /* الثيم يُطبَّق قبل أول رسم. تأجيله لآخر الصفحة يعني وميض الثيم
+     الافتراضي ثم انقلابه أمام الزائر. */
+  try {
+    var t = localStorage.getItem("lawn-theme");
+    if (t === "light" || t === "dark") {
+      document.documentElement.setAttribute("data-theme", t);
+    }
+  } catch (e) { /* التخزين محجوب: يُتبع إعداد النظام */ }
+</script>
+</head>
+
+<body>
+
+<!-- خط الدهان: يمسح الشاشة عند التحميل. يُخفى افتراضياً ويظهره motion.js فقط -->
+<div class="paint-wipe" aria-hidden="true" style="display:none"></div>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">تخطَّ إلى المحتوى</a>
+
+<!-- ══════════════════ التنقل ══════════════════ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+
+    <a class="nav__brand" href="#hero" aria-label="مؤسسة لون — الصفحة الرئيسية">
+      <svg viewBox="0 0 1240 1240" aria-hidden="true" fill="currentColor">
+        <circle cx="441" cy="243" r="68"/>
+        <rect x="858" y="172" width="103" height="595"/>
+        <rect x="343" y="520" width="104" height="455"/>
+        <rect x="470" y="520" width="100" height="455"/>
+        <path d="M713 520v250h-3a125 125 0 0 1 0-250z"/>
+        <rect x="733" y="520" width="100" height="470"/>
+      </svg>
+      <span class="nav__brand-text" data-i18n="brand.short">مؤسسة لون</span>
+    </a>
+
+    <nav class="nav__links" aria-label="التنقل الرئيسي">
+      <a class="nav__link" href="#about"    data-i18n="nav.about">من نحن</a>
+      <a class="nav__link" href="#services" data-i18n="nav.services">خدماتنا</a>
+      <a class="nav__link" href="#work"     data-i18n="nav.work">أعمالنا</a>
+      <a class="nav__link" href="#contact"  data-i18n="nav.contact">تواصل معنا</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" type="button"
+              aria-label="تبديل الثيم" data-i18n-attr="aria-label" data-i18n="a11y.theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
+      <a class="btn btn--primary nav__cta" href="#contact" data-i18n="cta.quote">اطلب عرض سعر</a>
+      <button class="burger" id="burger" type="button"
+              aria-expanded="false" aria-controls="mobileMenu"
+              aria-label="فتح القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- قائمة الجوال -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav aria-label="قائمة الجوال" style="display:grid">
+    <a href="#about"    data-i18n="nav.about">من نحن</a>
+    <a href="#services" data-i18n="nav.services">خدماتنا</a>
+    <a href="#work"     data-i18n="nav.work">أعمالنا</a>
+    <a href="#contact"  data-i18n="nav.contact">تواصل معنا</a>
+  </nav>
+</div>
+
+<main id="main">
+
+<!-- ══════════════════ الهيرو ══════════════════ -->
+<section class="hero" id="hero">
+ <div class="hero__stage">
+
+  <!-- المشهد ساكن حتى يبدأ التمرير: بلا autoplay وبلا loop.
+       التمرير هو ما يحرّك الزمن، وسكربت hero-video.js يتولّى ذلك. -->
+  <!-- المشهد تسلسل صور لا فيديو: عنصر <video> يعتمد على محرّك الوسائط
+       وفكّ الترميز بالعتاد، وهو معطّل على بعض الأجهزة. الصور لا تفشل. -->
+  <canvas class="hero__video" id="heroCanvas" width="1280" height="720"
+          aria-hidden="true"></canvas>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="container hero__content">
+    <span class="eyebrow" data-reveal data-i18n="hero.eyebrow">مقاولات عامة · دهانات</span>
+
+    <h1 class="hero__title" id="heroTitle" data-reveal>
+      <span data-i18n="hero.line1">نُتقن اللون</span><br>
+      <em data-i18n="hero.line2">فيتغيّر المكان</em>
+    </h1>
+
+    <p class="hero__sub" data-reveal data-i18n="hero.sub">
+      مؤسسة لون للمقاولات العامة — متخصصون في الدهانات الداخلية والخارجية والتشطيبات.
+      خامات معتمدة، فريق مدرّب، وتسليم في الموعد المتفق عليه.
+    </p>
+
+    <div class="hero__actions" data-reveal>
+      <a class="btn btn--primary" href="#contact" data-i18n="cta.quote">اطلب عرض سعر</a>
+      <a class="btn btn--ghost" href="#work" data-i18n="cta.work">شاهد أعمالنا</a>
+    </div>
+  </div>
+ </div>
+</section>
+
+<!-- ══════════════════ من نحن ══════════════════ -->
+<section class="section section--alt" id="about">
+  <div class="container">
+    <span class="eyebrow" data-reveal data-i18n="about.eyebrow">من نحن</span>
+    <h2 class="section-title" data-reveal data-i18n="about.title">خبرة ميدانية تُترجَم إلى جدران لا تحتاج إعادة عمل</h2>
+
+    <div class="about__grid">
+
+      <div class="about__body">
+        <p data-reveal data-i18n="about.p1">
+          نعمل في قطاع المقاولات العامة مع تخصص أساسي في الدهانات. نتعامل مع الفلل والشقق
+          والمكاتب والمنشآت التجارية، ونلتزم بمعايير تحضير الأسطح قبل الدهان — لأن جودة
+          النتيجة النهائية تُحسم في هذه المرحلة تحديداً.
+        </p>
+        <p data-reveal data-i18n="about.p2">
+          نبدأ بمعاينة مجانية وتقدير واضح للتكلفة والمدة، ثم ننفّذ بفريق ثابت مدرّب،
+          ونسلّم الموقع نظيفاً. لا تكاليف مفاجئة بعد الاتفاق.
+        </p>
+
+        <ul class="about__points">
+          <li data-reveal>
+            <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M104 192a8 8 0 0 1-5.66-2.34l-56-56a8 8 0 0 1 11.32-11.32L104 172.69 210.34 66.34a8 8 0 0 1 11.32 11.32l-112 112A8 8 0 0 1 104 192Z"/></svg>
+            <span data-i18n="about.point1">معاينة وتسعير مجاني قبل بدء أي عمل</span>
+          </li>
+          <li data-reveal>
+            <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M104 192a8 8 0 0 1-5.66-2.34l-56-56a8 8 0 0 1 11.32-11.32L104 172.69 210.34 66.34a8 8 0 0 1 11.32 11.32l-112 112A8 8 0 0 1 104 192Z"/></svg>
+            <span data-i18n="about.point2">خامات أصلية من موردين معتمدين</span>
+          </li>
+          <li data-reveal>
+            <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M104 192a8 8 0 0 1-5.66-2.34l-56-56a8 8 0 0 1 11.32-11.32L104 172.69 210.34 66.34a8 8 0 0 1 11.32 11.32l-112 112A8 8 0 0 1 104 192Z"/></svg>
+            <span data-i18n="about.point3">ضمان على التنفيذ ومتابعة بعد التسليم</span>
+          </li>
+          <li data-reveal>
+            <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M104 192a8 8 0 0 1-5.66-2.34l-56-56a8 8 0 0 1 11.32-11.32L104 172.69 210.34 66.34a8 8 0 0 1 11.32 11.32l-112 112A8 8 0 0 1 104 192Z"/></svg>
+            <span data-i18n="about.point4">التزام بالموعد وتسليم الموقع نظيفاً</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="stats" data-reveal>
+        <div class="stat">
+          <!-- سنة التأسيس لا عدد السنوات: العدد يُشتقّ من سنة المتصفّح فلا يتقادم -->
+          <div class="stat__num tabular" data-count-since="2001">25</div>
+          <div class="stat__label" data-i18n="stats.years">سنة خبرة</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num tabular" data-count="1000" data-suffix="+">1000+</div>
+          <div class="stat__label" data-i18n="stats.projects">مشروع منجز</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num tabular" data-count="1000" data-suffix="+">1000+</div>
+          <div class="stat__label" data-i18n="stats.clients">عميل</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num tabular" data-count="98" data-suffix="%">98%</div>
+          <div class="stat__label" data-i18n="stats.ontime">تسليم في الموعد</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ الخدمات ══════════════════ -->
+<section class="section section--base" id="services">
+  <div class="container">
+    <span class="eyebrow" data-reveal data-i18n="services.eyebrow">خدماتنا</span>
+    <h2 class="section-title" data-reveal data-i18n="services.title">من التحضير حتى اللمسة الأخيرة</h2>
+    <p class="section-lede" data-reveal data-i18n="services.lede">
+      نغطي دورة العمل كاملة، فلا تحتاج للتنسيق بين أكثر من مقاول.
+    </p>
+
+    <div class="swatches">
+
+      <article class="swatch" data-reveal>
+        <div class="swatch__chip">
+            <img src="assets/img/services/restore.jpg" alt="إعادة دهان جدار برول فوق سطح مُعالَج" data-i18n-attr="alt" data-i18n="svc.img.restore"
+                 width="900" height="620" loading="lazy" decoding="async">
+          </div>
+        <div class="swatch__body">
+          <h3 class="swatch__title" data-i18n="svc.5.t">ترميم وصيانة</h3>
+          <p class="swatch__desc" data-i18n="svc.5.d">معالجة التشققات والتقشير والرطوبة، وإعادة المبنى إلى حالته بأقل تدخل ممكن.</p>
+        </div>
+      </article>
+
+      <article class="swatch" data-reveal>
+        <div class="swatch__chip">
+            <img src="assets/img/services/plaster.jpg" alt="يد تُلاسّ جداراً إسمنتياً بالمسطرين" data-i18n-attr="alt" data-i18n="svc.img.plaster"
+                 width="900" height="620" loading="lazy" decoding="async">
+          </div>
+        <div class="swatch__body">
+          <h3 class="swatch__title" data-i18n="svc.6.t">لياسة</h3>
+          <p class="swatch__desc" data-i18n="svc.6.d">لياسة أسمنتية مستوية للجدران والأسقف، زوايا مستقيمة وسطح مهيّأ للمعجون والدهان.</p>
+        </div>
+      </article>
+
+      <article class="swatch" data-reveal>
+        <div class="swatch__chip">
+            <img src="assets/img/services/gypsum.jpg" alt="غرفة بسقف جبس بورد مخفي وإنارة خطّية مدمجة" data-i18n-attr="alt" data-i18n="svc.img.gypsum"
+                 width="900" height="620" loading="lazy" decoding="async">
+          </div>
+        <div class="swatch__body">
+          <h3 class="swatch__title" data-i18n="svc.4.t">جبس بورد</h3>
+          <p class="swatch__desc" data-i18n="svc.4.d">أسقف وقواطع جبس بورد، أسقف مخفية وبارزة، وتجهيز للإنارة المدمجة بسطح جاهز للدهان.</p>
+        </div>
+      </article>
+
+      <article class="swatch" data-reveal>
+        <div class="swatch__chip">
+            <img src="assets/img/services/interior.jpg" alt="جدار داخلي بتشطيب جيري أبيض ناعم الملمس" data-i18n-attr="alt" data-i18n="svc.img.interior"
+                 width="900" height="620" loading="lazy" decoding="async">
+          </div>
+        <div class="swatch__body">
+          <h3 class="swatch__title" data-i18n="svc.1.t">دهانات داخلية</h3>
+          <p class="swatch__desc" data-i18n="svc.1.d">تحضير كامل للأسطح، معجون، وطبقات دهان متساوية بحواف نظيفة وبدون روائح مزعجة.</p>
+        </div>
+      </article>
+
+      <article class="swatch" data-reveal>
+        <div class="swatch__chip">
+            <img src="assets/img/services/exterior.jpg" alt="جدار خارجي بدهان مُزمَّل خشن حبيبي الملمس" data-i18n-attr="alt" data-i18n="svc.img.exterior"
+                 width="900" height="620" loading="lazy" decoding="async">
+          </div>
+        <div class="swatch__body">
+          <h3 class="swatch__title" data-i18n="svc.2.t">دهانات خارجية</h3>
+          <p class="swatch__desc" data-i18n="svc.2.d">دهانات مقاومة للحرارة والأتربة والأشعة، تحافظ على لونها في مناخ المنطقة لسنوات.</p>
+        </div>
+      </article>
+
+      <article class="swatch" data-reveal>
+        <div class="swatch__chip swatch__chip--compare">
+            <img src="assets/img/services/decor-a.jpg" alt="تشطيب ديكوري إسمنتي رمادي ناعم" data-i18n-attr="alt" data-i18n="svc.img.decorA"
+                 width="450" height="620" loading="lazy" decoding="async">
+            <img src="assets/img/services/decor-b.jpg" alt="تشطيب ديكوري بيج متموّج الملمس" data-i18n-attr="alt" data-i18n="svc.img.decorB"
+                 width="450" height="620" loading="lazy" decoding="async">
+            <input class="compare__range" type="range" min="0" max="100" value="50" step="0.1"
+                   aria-label="اسحب لمقارنة التشطيبين" data-i18n-attr="aria-label" data-i18n="a11y.compare">
+            <span class="compare__line" aria-hidden="true"></span>
+            <span class="compare__grip" aria-hidden="true">
+              <svg viewBox="0 0 256 256" fill="currentColor"><path d="M136 40v176a8 8 0 0 1-16 0V40a8 8 0 0 1 16 0ZM85.66 93.66a8 8 0 0 0-11.32-11.32l-40 40a8 8 0 0 0 0 11.32l40 40a8 8 0 0 0 11.32-11.32L59.31 136H96a8 8 0 0 0 0-16H59.31Zm136 28.68-40-40a8 8 0 0 0-11.32 11.32L196.69 120H160a8 8 0 0 0 0 16h36.69l-26.35 26.34a8 8 0 0 0 11.32 11.32l40-40a8 8 0 0 0 0-11.32Z"/></svg>
+            </span>
+          </div>
+        <div class="swatch__body">
+          <h3 class="swatch__title" data-i18n="svc.3.t">ديكورات وتشطيبات</h3>
+          <p class="swatch__desc" data-i18n="svc.3.d">ورق جدران، دهانات ثلاثية الأبعاد، أسقف مزخرفة، وبروفايلات بتنفيذ دقيق.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ قبل / بعد ══════════════════ -->
+<section class="section section--alt" id="reveal">
+  <div class="container">
+    <span class="eyebrow" data-reveal data-i18n="ba.eyebrow">الفرق</span>
+    <h2 class="section-title" data-reveal data-i18n="ba.title">اسحب المقبضين وشوف المراحل الثلاث</h2>
+    <p class="section-lede" data-reveal data-i18n="ba.lede">
+      جدار متشقّق، ثم بعد معالجة الشقوق وتحضير السطح، ثم بعد الدهان.
+    </p>
+
+    <!-- المراحل الثلاث صور حقيقية. جدران عامة لا مشروع بعينه — فلا ادّعاء
+         بعمل لم يُنفَّذ، وهي القاعدة نفسها التي وُضعت لأجلها الرسوم سابقاً. -->
+    <div class="reveal" id="baReveal" data-reveal>
+      <div class="reveal__wall reveal__wall--before" aria-hidden="true"></div>
+
+      <div class="reveal__wall reveal__wall--during" aria-hidden="true"></div>
+
+      <div class="reveal__wall reveal__wall--after" aria-hidden="true"></div>
+
+      <span class="reveal__line reveal__line--1" aria-hidden="true"></span>
+      <span class="reveal__line reveal__line--2" aria-hidden="true"></span>
+
+      <span class="reveal__tag reveal__tag--before" data-i18n="ba.before">قبل</span>
+      <span class="reveal__tag reveal__tag--during" data-i18n="ba.during">أثناء التحضير</span>
+      <span class="reveal__tag reveal__tag--after" data-i18n="ba.after">بعد</span>
+
+      <input class="reveal__range reveal__range--1" id="baRange1" type="range" min="0" max="100" value="33" step="0.5"
+             aria-label="حدّ مرحلة التحضير"
+             data-i18n-attr="aria-label" data-i18n="ba.aria1">
+      <input class="reveal__range reveal__range--2" id="baRange2" type="range" min="0" max="100" value="66" step="0.5"
+             aria-label="حدّ مرحلة الدهان"
+             data-i18n-attr="aria-label" data-i18n="ba.aria2">
+
+      <span class="reveal__grip reveal__grip--1" aria-hidden="true">
+        <svg viewBox="0 0 256 256" fill="currentColor"><path d="M136 40v176a8 8 0 0 1-16 0V40a8 8 0 0 1 16 0ZM85.66 93.66a8 8 0 0 0-11.32-11.32l-40 40a8 8 0 0 0 0 11.32l40 40a8 8 0 0 0 11.32-11.32L59.31 136H96a8 8 0 0 0 0-16H59.31Zm136 28.68-40-40a8 8 0 0 0-11.32 11.32L196.69 120H160a8 8 0 0 0 0 16h36.69l-26.35 26.34a8 8 0 0 0 11.32 11.32l40-40a8 8 0 0 0 0-11.32Z"/></svg>
+      </span>
+      <span class="reveal__grip reveal__grip--2" aria-hidden="true">
+        <svg viewBox="0 0 256 256" fill="currentColor"><path d="M136 40v176a8 8 0 0 1-16 0V40a8 8 0 0 1 16 0ZM85.66 93.66a8 8 0 0 0-11.32-11.32l-40 40a8 8 0 0 0 0 11.32l40 40a8 8 0 0 0 11.32-11.32L59.31 136H96a8 8 0 0 0 0-16H59.31Zm136 28.68-40-40a8 8 0 0 0-11.32 11.32L196.69 120H160a8 8 0 0 0 0 16h36.69l-26.35 26.34a8 8 0 0 0 11.32 11.32l40-40a8 8 0 0 0 0-11.32Z"/></svg>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ أعمالنا ══════════════════ -->
+<section class="section section--base" id="work">
+  <div class="container">
+    <span class="eyebrow" data-reveal data-i18n="work.eyebrow">أعمالنا</span>
+    <h2 class="section-title" data-reveal data-i18n="work.title">مشاريع نفخر بتسليمها</h2>
+
+    <!--
+      ⚠️ صور مؤقتة من Unsplash — تم التحقق من محتوى كل صورة بصرياً.
+      التسميات تصف نوع العمل لا مشروعاً بعينه، حتى لا يدّعي الموقع
+      مشاريع لم تُنفَّذ. عند وضع صورك الحقيقية غيّر التسميات لأسماء المشاريع.
+      استبدل src و data-full، واضبط width/height على الأبعاد الحقيقية.
+    -->
+    <div class="coverflow" id="coverflow" data-reveal
+         role="region" aria-roledescription="carousel" aria-label="معرض الأعمال"
+         data-i18n-attr="aria-label" data-i18n="work.aria">
+
+      <div class="coverflow__stage">
+      <div class="coverflow__frame" id="cfFrame" tabindex="0">
+        <div class="coverflow__track" id="cfTrack">
+
+          <button class="coverflow__card gallery__item" type="button"
+                  role="group" aria-roledescription="slide"
+                  data-full="https://images.unsplash.com/photo-1779292348440-25d0ce2462ab?auto=format&fit=crop&w=1500&h=1500&q=80">
+            <img src="https://images.unsplash.com/photo-1779292348440-25d0ce2462ab?auto=format&fit=crop&w=700&h=700&q=72"
+                 width="700" height="700" loading="lazy" decoding="async"
+                 alt="عامل بملابس عمل حمراء وخوذة يدهن واجهة مبنى برول طويل"
+                 data-i18n-attr="alt" data-i18n="work.1.alt">
+            <span class="visually-hidden gallery__caption" data-i18n="work.1.cap">دهانات خارجية — تنفيذ بالرول الطويل</span>
+          </button>
+
+          <button class="coverflow__card gallery__item" type="button"
+                  role="group" aria-roledescription="slide"
+                  data-full="https://images.unsplash.com/photo-1544214763-5c18dd78c046?auto=format&fit=crop&w=1500&h=1500&q=80">
+            <img src="https://images.unsplash.com/photo-1544214763-5c18dd78c046?auto=format&fit=crop&w=700&h=700&q=72"
+                 width="700" height="700" loading="lazy" decoding="async"
+                 alt="غرفة بيضاء بعد الدهان وبداخلها سلّم ومقعد عمل"
+                 data-i18n-attr="alt" data-i18n="work.2.alt">
+            <span class="visually-hidden gallery__caption" data-i18n="work.2.cap">غرفة داخلية — بعد الوجه النهائي</span>
+          </button>
+
+          <button class="coverflow__card gallery__item" type="button"
+                  role="group" aria-roledescription="slide"
+                  data-full="https://images.unsplash.com/photo-1595814432848-830b880ecf0e?auto=format&fit=crop&w=1500&h=1500&q=80">
+            <img src="https://images.unsplash.com/photo-1595814432848-830b880ecf0e?auto=format&fit=crop&w=700&h=700&q=72"
+                 width="700" height="700" loading="lazy" decoding="async"
+                 alt="يد تمرّر رول الدهان على جدار داخلي عن قرب"
+                 data-i18n-attr="alt" data-i18n="work.3.alt">
+            <span class="visually-hidden gallery__caption" data-i18n="work.3.cap">دهانات داخلية — تمرير الوجه الأول</span>
+          </button>
+
+          <button class="coverflow__card gallery__item" type="button"
+                  role="group" aria-roledescription="slide"
+                  data-full="https://images.unsplash.com/photo-1778576959745-7ae9bae317ce?auto=format&fit=crop&w=1500&h=1500&q=80">
+            <img src="https://images.unsplash.com/photo-1778576959745-7ae9bae317ce?auto=format&fit=crop&w=700&h=700&q=72"
+                 width="700" height="700" loading="lazy" decoding="async"
+                 alt="جدار داخلي بلون برتقالي دافئ معلّق عليه إطاران"
+                 data-i18n-attr="alt" data-i18n="work.4.alt">
+            <span class="visually-hidden gallery__caption" data-i18n="work.4.cap">ديكور داخلي — جدار بلون مميّز</span>
+          </button>
+
+          <button class="coverflow__card gallery__item" type="button"
+                  role="group" aria-roledescription="slide"
+                  data-full="https://images.unsplash.com/photo-1516962080544-eac695c93791?auto=format&fit=crop&w=1500&h=1500&q=80">
+            <img src="https://images.unsplash.com/photo-1516962080544-eac695c93791?auto=format&fit=crop&w=700&h=700&q=72"
+                 width="700" height="700" loading="lazy" decoding="async"
+                 alt="رول دهان أبيض نظيف قبل الاستخدام"
+                 data-i18n-attr="alt" data-i18n="work.5.alt">
+            <span class="visually-hidden gallery__caption" data-i18n="work.5.cap">الخامات — عدّة نظيفة لكل موقع</span>
+          </button>
+
+          <button class="coverflow__card gallery__item" type="button"
+                  role="group" aria-roledescription="slide"
+                  data-full="https://images.unsplash.com/photo-1633389263541-84618e56b894?auto=format&fit=crop&w=1500&h=1500&q=80">
+            <img src="https://images.unsplash.com/photo-1633389263541-84618e56b894?auto=format&fit=crop&w=700&h=700&q=72"
+                 width="700" height="700" loading="lazy" decoding="async"
+                 alt="جدار مدهون بلون أخضر مصمت بسطح مستوٍ"
+                 data-i18n-attr="alt" data-i18n="work.6.alt">
+            <span class="visually-hidden gallery__caption" data-i18n="work.6.cap">سطح مستوٍ — دهان بلا آثار رول</span>
+          </button>
+
+        </div>
+      </div>
+
+      <button class="coverflow__nav coverflow__nav--prev" type="button" id="cfPrev"
+              aria-label="الشريحة السابقة" data-i18n-attr="aria-label" data-i18n="work.prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+
+      <button class="coverflow__nav coverflow__nav--next" type="button" id="cfNext"
+              aria-label="الشريحة التالية" data-i18n-attr="aria-label" data-i18n="work.next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+      </div>
+
+      <p class="coverflow__caption" id="cfCaption" aria-live="polite"></p>
+
+      <div class="coverflow__dots" id="cfDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ تواصل معنا ══════════════════ -->
+<section class="section section--alt" id="contact">
+  <div class="container">
+    <span class="eyebrow" data-reveal data-i18n="contact.eyebrow">تواصل معنا</span>
+    <h2 class="section-title" data-reveal data-i18n="contact.title">احصل على عرض سعر خلال ٢٤ ساعة</h2>
+    <p class="section-lede" data-reveal data-i18n="contact.lede">
+      أرسل تفاصيل مشروعك وسنعاود التواصل معك بتقدير مبدئي للتكلفة والمدة.
+    </p>
+
+    <div class="contact__grid">
+
+      <div class="contact-cards" data-reveal>
+        <a class="contact-card" id="cardPhone" href="tel:+966503840013">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 256 256" fill="currentColor"><path d="M222.37 158.46l-47.11-21.11-.13-.06a16 16 0 0 0-15.17 1.4 8.12 8.12 0 0 0-.75.56L134.87 160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.19-.25.37-.5.54-.76a16 16 0 0 0 1.32-15.06v-.12L97.54 33.64a16 16 0 0 0-16.62-9.52A56.26 56.26 0 0 0 32 80c0 79.4 64.6 144 144 144a56.26 56.26 0 0 0 55.88-48.92 16 16 0 0 0-9.51-16.62ZM176 208A128.14 128.14 0 0 1 48 80a40.2 40.2 0 0 1 34.87-40 .61.61 0 0 0 0 .12l21 47-20.67 24.74a6.13 6.13 0 0 0-.57.77 16 16 0 0 0-1 15.7c9.06 18.53 27.73 37.06 46.46 46.11a16 16 0 0 0 15.75-1.14 8.44 8.44 0 0 0 .74-.56L168.89 152l47 21.05h.11A40.21 40.21 0 0 1 176 208Z"/></svg>
+          </span>
+          <span>
+            <span class="contact-card__label" data-i18n="contact.phone">الجوال</span>
+            <span class="contact-card__value" id="valPhone">+966 50 384 0013</span>
+          </span>
+        </a>
+
+        <a class="contact-card" id="cardWa" href="#" target="_blank" rel="noopener">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 256 256" fill="currentColor"><path d="M128 24a104 104 0 0 0-91.8 152.88l-8 28a8 8 0 0 0 9.9 9.9l28-8A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.15-.77l-21.68 6.19 6.19-21.68a8 8 0 0 0-.77-6.15A88 88 0 1 1 128 216Zm48.24-63.85c-1.2-.68-11.5-6.61-13.61-7.38s-3.62-1.16-5.28.79-6.42 7.38-7.86 8.87-2.88 1.42-5.28.29a71.53 71.53 0 0 1-21-13 79.35 79.35 0 0 1-14.55-18.11c-1.52-2.62-.16-4 1.15-5.29s2.4-2.4 3.6-4a15.87 15.87 0 0 0 2.4-4 4.4 4.4 0 0 0-.2-4.2c-.6-1.2-5.28-12.72-7.23-17.42s-3.84-4-5.28-4.05h-4.5a8.65 8.65 0 0 0-6.24 2.88 26.19 26.19 0 0 0-8.16 19.5c0 11.5 8.36 22.6 9.52 24.16s16.44 25.1 39.83 35.2a133.5 133.5 0 0 0 13.29 4.91 32 32 0 0 0 14.68.92c4.48-.67 13.79-5.63 15.74-11.07s1.95-10.09 1.36-11.07-2.16-1.53-4.56-2.68Z"/></svg>
+          </span>
+          <span>
+            <span class="contact-card__label" data-i18n="contact.wa">واتساب</span>
+            <span class="contact-card__value" id="valWa">‎+966 50 384 0013</span>
+          </span>
+        </a>
+
+        <a class="contact-card" id="cardMail" href="mailto:colourpaintest@yahoo.com">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 256 256" fill="currentColor"><path d="M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8Zm-20.57 16L128 133.15 52.57 64ZM216 192H40V74.19l82.59 75.71a8 8 0 0 0 10.82 0L216 74.19V192Z"/></svg>
+          </span>
+          <span>
+            <span class="contact-card__label" data-i18n="contact.mail">البريد الإلكتروني</span>
+            <span class="contact-card__value" id="valMail">colourpaintest@yahoo.com</span>
+          </span>
+        </a>
+
+        <div class="contact-card">
+          <span class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 256 256" fill="currentColor"><path d="M128 64a40 40 0 1 0 40 40 40 40 0 0 0-40-40Zm0 64a24 24 0 1 1 24-24 24 24 0 0 1-24 24Zm0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.19 254.19 0 0 0 41.45 38.3 8 8 0 0 0 9.18 0 254.19 254.19 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88Zm0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118Z"/></svg>
+          </span>
+          <span>
+            <span class="contact-card__label" data-i18n="contact.city">الموقع</span>
+            <span class="contact-card__value" style="direction:inherit" id="valCity" data-i18n="contact.cityValue">الظهران، المملكة العربية السعودية</span>
+          </span>
+        </div>
+      </div>
+
+      <form class="form" id="quoteForm" novalidate data-reveal>
+        <div class="form__row">
+          <div class="field">
+            <label for="fName" data-i18n="form.name">الاسم <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="fName" name="name" autocomplete="name" required>
+            <span class="field__error" role="alert" data-i18n="form.err.name">الرجاء إدخال الاسم</span>
+          </div>
+
+          <div class="field">
+            <label for="fPhone" data-i18n="form.phone">رقم الجوال <span class="req" aria-hidden="true">*</span></label>
+            <input type="tel" id="fPhone" name="phone" inputmode="tel" autocomplete="tel"
+                   dir="ltr" placeholder="05XXXXXXXX" required>
+            <span class="field__error" role="alert" data-i18n="form.err.phone">أدخل رقم جوال صحيح (١٠ أرقام يبدأ بـ ٠٥)</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fType" data-i18n="form.type">نوع المشروع</label>
+          <select id="fType" name="type">
+            <option value="دهانات داخلية"   data-i18n="form.type.1">دهانات داخلية</option>
+            <option value="دهانات خارجية"   data-i18n="form.type.2">دهانات خارجية</option>
+            <option value="ديكورات وتشطيبات" data-i18n="form.type.3">ديكورات وتشطيبات</option>
+            <option value="جبس بورد"        data-i18n="form.type.4">جبس بورد</option>
+            <option value="ترميم وصيانة"     data-i18n="form.type.5">ترميم وصيانة</option>
+            <option value="لياسة"           data-i18n="form.type.6">لياسة</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="fMsg" data-i18n="form.msg">تفاصيل المشروع</label>
+          <textarea id="fMsg" name="message"
+                    data-i18n-attr="placeholder" data-i18n="form.msg.ph"
+                    placeholder="مثال: فيلا دورين، مساحة ٤٠٠م، مطلوب دهان داخلي وخارجي"></textarea>
+          <span class="field__hint" data-i18n="form.msg.hint">كلما زادت التفاصيل، كان التسعير أدق.</span>
+        </div>
+
+        <button class="btn btn--primary" type="submit" style="justify-self:start" data-i18n="form.submit">
+          أرسل الطلب عبر واتساب
+        </button>
+
+        <p class="form__note" data-i18n="form.note">
+          بالضغط على الزر سيُفتح واتساب برسالة جاهزة تحتوي بياناتك — تراجعها قبل الإرسال.
+        </p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ الفوتر ══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div>
+        <a class="nav__brand" href="#hero" style="margin-bottom:16px">
+          <svg viewBox="0 0 1240 1240" aria-hidden="true" fill="currentColor" style="width:34px;height:34px">
+            <circle cx="441" cy="243" r="68"/>
+            <rect x="858" y="172" width="103" height="595"/>
+            <rect x="343" y="520" width="104" height="455"/>
+            <rect x="470" y="520" width="100" height="455"/>
+            <path d="M713 520v250h-3a125 125 0 0 1 0-250z"/>
+            <rect x="733" y="520" width="100" height="470"/>
+          </svg>
+          <span class="nav__brand-text" data-i18n="brand.full">مؤسسة لون للمقاولات العامة</span>
+        </a>
+        <p style="color:var(--muted);font-size:15px;max-width:42ch" data-i18n="footer.tag">
+          متخصصون في الدهانات والتشطيبات. جودة تنفيذ والتزام بالموعد.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="footer__heading" data-i18n="footer.links">روابط</h3>
+        <ul class="footer__links">
+          <li><a href="#about"    data-i18n="nav.about">من نحن</a></li>
+          <li><a href="#services" data-i18n="nav.services">خدماتنا</a></li>
+          <li><a href="#work"     data-i18n="nav.work">أعمالنا</a></li>
+          <li><a href="#contact"  data-i18n="nav.contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer__heading" data-i18n="footer.contact">للتواصل</h3>
+        <ul class="footer__links">
+          <li><a href="tel:+966503840013" class="tabular" id="footPhone" dir="ltr">+966 50 384 0013</a></li>
+          <li><a href="mailto:colourpaintest@yahoo.com" id="footMail" dir="ltr">colourpaintest@yahoo.com</a></li>
+          <li><span class="footer__meta" data-i18n="footer.cr">س.ت 2051028422</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span data-i18n="footer.rights">© ٢٠٢٦ مؤسسة لون للمقاولات العامة. جميع الحقوق محفوظة.</span>
+      <span data-i18n="footer.city">الظهران، المملكة العربية السعودية</span>
+    </div>
+  </div>
+</footer>
+
+<!-- زر واتساب العائم -->
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener"
+   aria-label="تواصل عبر واتساب" data-i18n-attr="aria-label" data-i18n="a11y.wa">
+  <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 24a104 104 0 0 0-91.8 152.88l-8 28a8 8 0 0 0 9.9 9.9l28-8A104 104 0 1 0 128 24Zm48.24 128.15c-1.2-.68-11.5-6.61-13.61-7.38s-3.62-1.16-5.28.79-6.42 7.38-7.86 8.87-2.88 1.42-5.28.29a71.53 71.53 0 0 1-21-13 79.35 79.35 0 0 1-14.55-18.11c-1.52-2.62-.16-4 1.15-5.29s2.4-2.4 3.6-4a15.87 15.87 0 0 0 2.4-4 4.4 4.4 0 0 0-.2-4.2c-.6-1.2-5.28-12.72-7.23-17.42s-3.84-4-5.28-4.05h-4.5a8.65 8.65 0 0 0-6.24 2.88 26.19 26.19 0 0 0-8.16 19.5c0 11.5 8.36 22.6 9.52 24.16s16.44 25.1 39.83 35.2a133.5 133.5 0 0 0 13.29 4.91 32 32 0 0 0 14.68.92c4.48-.67 13.79-5.63 15.74-11.07s1.95-10.09 1.36-11.07-2.16-1.53-4.56-2.68Z"/></svg>
+</a>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="عرض الصورة">
+  <figure class="lightbox__figure">
+    <button class="lightbox__close" id="lbClose" type="button" aria-label="إغلاق"
+            data-i18n-attr="aria-label" data-i18n="a11y.close">
+      <svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/></svg>
+    </button>
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="assets/js/i18n.js"></script>
+<!-- قبل motion.js عمداً: مستمع النقر هنا يجب أن يُسجَّل أولاً حتى يستطيع
+     إيقاف فتح العارض عند النقر على بطاقة جانبية أو بعد سحب. -->
+<script src="assets/js/coverflow.js"></script>
+<script src="assets/js/hero-scene.js"></script>
+<script src="assets/js/motion.js"></script>
+</body>
+</html>
