@@ -809,22 +809,20 @@ button { font: inherit; color: inherit; }
 .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--surface-2);
-  border: 1px solid var(--surface-2);
+  gap: var(--space-3);
 }
 
-/* البطاقة تأخذ لون الخلفية لا لون النص. الشبكة مرسومة بتباين البطاقة مع
-   لون الأب (--surface-2) عبر فراغ 1px — لا علاقة لها بسطح القسم، فتوحيد
-   الأقسام على --bg لم يمسّها. */
-/* حشو بلون --bg لا --surface: شبكة العدّادات مرسومة بتباين البطاقة مع
-   --surface-2 عبر فراغ 1px، وحشو بلون السطح يُلغي ذلك التباين فتختفي
-   الشبكة. الخط أصلاً شعرة رفيعة (1.24 داكناً و1.12 فاتحاً)، وعند 0.80
-   يبقى 1.20 و1.10 — أي كما كان عملياً. */
+/* بلاطات زجاجية مثل بطاقات الخدمات — نفس الرموز فتتغيّر معها.
+   كانت شبكة بفراغ 1px فوق --surface-2؛ استُبدلت بفجوات وبلاطات مستقلة
+   لأن الزجاج يحتاج حافة وظلّاً ليُقرأ زجاجاً، والشبكة الملتصقة تمنعهما.
+   التباين نفس حساب البطاقات: الذهبي على الزجاج فوق الهالة 5.13 (الحدّ 4.5). */
 .stat {
-  background: rgba(var(--bg-rgb), 0.8);
+  background: var(--glass-fill);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-sheen), 0 8px 28px rgba(0, 0, 0, 0.16);
   padding: var(--space-5) var(--space-4);
 }
 
@@ -1668,6 +1666,6 @@ body.is-locked { overflow: hidden; }
   .field textarea,
   .field select { background: var(--surface); }
 
-  .stat { background: var(--bg); }
+  .stat { background: var(--surface); }
   .mobile-menu { background: var(--bg); }
 }
