@@ -725,7 +725,7 @@ button { font: inherit; color: inherit; }
       linear-gradient(to bottom, rgba(var(--scrim-rgb), 0.6) 0%, transparent 16%);
   }
 
-  .hero__content { padding-block: 120px var(--space-6); }
+  .hero__content { padding-block: 96px var(--space-5); } /* الشريط 88px + هامش صغير — كان 120 فترك فراغاً */
 }
 
 [dir="ltr"] .hero__scrim {
