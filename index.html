@@ -11,9 +11,70 @@
 
 <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
 
+<!-- ⚠️ عند ربط الدومين: بدّل https://rustic-website-rho.vercel.app في هذه الكتلة كلها
+     وفي sitemap.xml وrobots.txt. الروابط هنا يجب أن تكون مطلقة —
+     واتساب وتويتر لا يقبلان النسبية. -->
+<link rel="canonical" href="https://rustic-website-rho.vercel.app/">
+
+<!-- معاينة الرابط عند مشاركته في واتساب وتويتر ولينكدإن -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مؤسسة لون للمقاولات العامة">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://rustic-website-rho.vercel.app/">
+<meta property="og:title" data-i18n-attr="content" data-i18n="meta.title"
+      content="مؤسسة لون للمقاولات العامة — متخصصون في الدهانات">
+<meta property="og:description" data-i18n-attr="content" data-i18n="meta.desc"
+      content="مؤسسة لون للمقاولات العامة — دهانات داخلية وخارجية، ديكورات وتشطيبات، جبس بورد، لياسة وترميم. جودة تنفيذ وتسليم في الموعد.">
+<meta property="og:image" content="https://rustic-website-rho.vercel.app/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="واجهة فيلا أثناء أعمال الدهان والتشطيب">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" as="image" href="assets/frames/f001.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- بيانات منظّمة: تُعرّف جوجل بالنشاط وموقعه وخدماته.
+     الرقم والبريد والسجل مكرّرة هنا عمداً — محرّكات البحث تقرأ هذه الكتلة
+     لا نصّ الصفحة. لو غيّرت BIZ في i18n.js غيّرها هنا أيضاً. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://rustic-website-rho.vercel.app/#business",
+  "name": "مؤسسة لون للمقاولات العامة",
+  "alternateName": "Lawn General Contracting",
+  "url": "https://rustic-website-rho.vercel.app/",
+  "image": "https://rustic-website-rho.vercel.app/assets/img/og-cover.jpg",
+  "telephone": "+966503840013",
+  "email": "colourpaintest@yahoo.com",
+  "description": "مقاولات عامة متخصصة في الدهانات الداخلية والخارجية والديكورات والجبس بورد واللياسة والترميم.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "الظهران",
+    "addressRegion": "المنطقة الشرقية",
+    "addressCountry": "SA"
+  },
+  "areaServed": { "@type": "AdministrativeArea", "name": "المنطقة الشرقية" },
+  "knowsLanguage": ["ar", "en"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "الخدمات",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ترميم وصيانة" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "لياسة" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "جبس بورد" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "دهانات داخلية" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "دهانات خارجية" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ديكورات وتشطيبات" } }
+    ]
+  }
+}
+</script>
 
 <link rel="stylesheet" href="assets/css/styles.css">
 

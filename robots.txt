@@ -1,0 +1,5 @@
+# ⚠️ عند ربط الدومين بدّل الرابط أدناه
+User-agent: *
+Allow: /
+
+Sitemap: https://rustic-website-rho.vercel.app/sitemap.xml
