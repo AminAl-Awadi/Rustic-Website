@@ -909,6 +909,7 @@ button { font: inherit; color: inherit; }
    لأن الزجاج يحتاج حافة وظلّاً ليُقرأ زجاجاً، والشبكة الملتصقة تمنعهما.
    التباين نفس حساب البطاقات: الذهبي على الزجاج فوق الهالة 5.13 (الحدّ 4.5). */
 .stat {
+  container-type: inline-size; /* يجعل cqi أدناه = عرض البلاطة نفسها */
   background: var(--glass-fill);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -918,12 +919,21 @@ button { font: inherit; color: inherit; }
   padding: var(--space-5) var(--space-4);
 }
 
+/* 🪤 6.4vw كانت تقيس عرض الشاشة لا عرض البلاطة. البلاطة داخل عمود ضيّق
+   في شبكة «من نحن»، فعلى شاشة عريضة يكبر الرقم بما لا يسعه إطاره ويفيض.
+   cqi تقيس البلاطة نفسها (container-type أعلاه)، فالرقم يتناسب مع ما
+   يحويه لا مع النافذة. 24cqi مقاسة على «+1000» — أطول قيمة. */
 .stat__num {
   font-family: "Readex Pro", sans-serif;
-  font-size: clamp(34px, 6.4vw, 66px);
+  font-size: clamp(26px, 24cqi, 66px);
   font-weight: 700;
   line-height: 1;
   color: var(--brand);
+}
+
+/* متصفّح بلا دعم استعلامات الحاوية: قيمة ثابتة آمنة لا vw */
+@supports not (container-type: inline-size) {
+  .stat__num { font-size: clamp(26px, 5vw, 44px); }
 }
 
 .stat__label {
