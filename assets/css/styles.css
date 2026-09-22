@@ -891,6 +891,12 @@ button { font: inherit; color: inherit; }
   gap: var(--space-3);
 }
 
+/* «+1000» بحجم 42px يتجاوز نصف الشاشة الضيّقة، فيُقصّ. عمود واحد أوضح
+   من رقمين مقصوصين. */
+@media (max-width: 420px) {
+  .stats { grid-template-columns: 1fr; }
+}
+
 /* بلاطات زجاجية مثل بطاقات الخدمات — نفس الرموز فتتغيّر معها.
    كانت شبكة بفراغ 1px فوق --surface-2؛ استُبدلت بفجوات وبلاطات مستقلة
    لأن الزجاج يحتاج حافة وظلّاً ليُقرأ زجاجاً، والشبكة الملتصقة تمنعهما.
@@ -907,7 +913,7 @@ button { font: inherit; color: inherit; }
 
 .stat__num {
   font-family: "Readex Pro", sans-serif;
-  font-size: clamp(42px, 6.4vw, 66px);
+  font-size: clamp(34px, 6.4vw, 66px);
   font-weight: 700;
   line-height: 1;
   color: var(--brand);
@@ -1441,6 +1447,10 @@ body.is-locked { overflow: hidden; }
   transition: border-color var(--dur-fast) ease, transform var(--dur-fast) var(--ease-out);
 }
 
+/* 🪤 عنصر flex لا ينكمش دون عرض محتواه ما لم يُصرَّح min-width: 0.
+   بدونها يوسّع البريد الطويل البطاقة خارج الشاشة. */
+.contact-card > span { min-width: 0; }
+
 .contact-card:hover { border-color: var(--brand); transform: translateY(-2px); }
 
 .contact-card__icon {
@@ -1477,6 +1487,7 @@ body.is-locked { overflow: hidden; }
   direction: ltr;
   unicode-bidi: isolate;
   text-align: start;
+  overflow-wrap: anywhere;
 }
 
 [dir="rtl"] .contact-card__value { text-align: right; }
