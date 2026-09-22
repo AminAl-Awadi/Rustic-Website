@@ -916,16 +916,20 @@ button { font: inherit; color: inherit; }
   border: 1px solid var(--glass-edge);
   border-radius: var(--radius);
   box-shadow: var(--glass-sheen), 0 8px 28px rgba(0, 0, 0, 0.16);
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-5) var(--space-3);
 }
 
 /* 🪤 6.4vw كانت تقيس عرض الشاشة لا عرض البلاطة. البلاطة داخل عمود ضيّق
    في شبكة «من نحن»، فعلى شاشة عريضة يكبر الرقم بما لا يسعه إطاره ويفيض.
    cqi تقيس البلاطة نفسها (container-type أعلاه)، فالرقم يتناسب مع ما
-   يحويه لا مع النافذة. 24cqi مقاسة على «+1000» — أطول قيمة. */
+   يحويه لا مع النافذة.
+
+   19cqi مقاسة على «+1000» (خمسة محارف، أطول قيمة) عبر عروض بلاطة من
+   130px إلى 520px — 24cqi كانت تفيض على البلاطة الضيّقة لأن الحشو
+   الجانبي يلتهم نسبة أكبر هناك. */
 .stat__num {
   font-family: "Readex Pro", sans-serif;
-  font-size: clamp(26px, 24cqi, 66px);
+  font-size: clamp(24px, 19cqi, 66px);
   font-weight: 700;
   line-height: 1;
   color: var(--brand);
