@@ -466,10 +466,17 @@ button { font: inherit; color: inherit; }
   align-items: center;
   gap: 12px;
   min-height: 56px;
-  color: var(--logo);
 }
 
-.nav__brand svg { width: 56px; height: 56px; }
+/* الشعار الأصلي صورة لا رسم متجّه. الملف المرسل كان محتواه 51% من عرضه
+   والباقي هوامش شفافة، فبدا صغيراً مهما كُبّر — قُصّت الهوامش فصار الحجم
+   المعلن هو المرئي. الارتفاع هو المقياس هنا لأن الشعار طولي (634×830). */
+.nav__logo {
+  height: 52px;
+  width: auto;
+  flex: none;
+  display: block;
+}
 
 .nav__brand-text {
   font-family: "Readex Pro", sans-serif;
@@ -590,7 +597,7 @@ button { font: inherit; color: inherit; }
 @media (max-width: 479px) {
   .nav__inner { gap: var(--space-2); }
   .nav__brand { gap: 8px; }
-  .nav__brand svg { width: 44px; height: 44px; flex: none; }
+  .nav__logo { height: 42px; }
   .nav__brand-text { font-size: 17px; overflow: hidden; text-overflow: ellipsis; }
   .nav__actions { gap: 8px; }
   .lang-toggle { min-width: 52px; min-height: 44px; padding-inline: 10px; font-size: 14px; }
@@ -1637,7 +1644,7 @@ body.is-locked { overflow: hidden; }
    --nav-fg غير معرّف خارج الشريط فكان النص يرث أحمر الشعار — والأحمر
    للشعار وحده. */
 .footer .nav__brand { gap: 16px; }
-.footer .nav__brand svg { width: 80px; height: 80px; flex: none; }
+.footer .nav__logo { height: 72px; }
 .footer .nav__brand-text { color: var(--fg); font-size: 26px; white-space: normal; }
 
 .footer > .container {
