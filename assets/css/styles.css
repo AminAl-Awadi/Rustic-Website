@@ -157,6 +157,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* 🪤 الجوال: overflow-x على body وحده لا يمنع الصفحة من الاتّساع —
+     المتصفّح يحسب عرض المنفذ من html، فأي عنصر أعرض من الشاشة (بريد طويل
+     في عمود ضيّق مثلاً) يُوسّع المنفذ فتظهر الصفحة مزاحة وتُقصّ حافتها.
+     clip على html يقطع الاتّساع من جذره. */
+  overflow-x: clip;
   /* الشريط مثبّت فوق المحتوى: بدون هذا يقفز الرابط الداخلي فيختفي
      عنوان القسم تحته. القيمة = ارتفاع الشريط (88px) + هامش تنفّس. */
   scroll-padding-top: 104px;
@@ -170,7 +175,7 @@ body {
   font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 19px;
   line-height: 1.7;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -638,6 +643,7 @@ button { font: inherit; color: inherit; }
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
+  overflow: hidden; /* الدرج المنزلق خارج الشاشة لا يوسّع الصفحة */
   /* غطاء خفيف جداً: وظيفته التقاط النقر خارج الدرج لا إظلام الصفحة —
      الدرج الزجاجي واضح بذاته بحافته وظلّه. */
   background: rgba(var(--scrim-rgb), 0.12);
@@ -1642,7 +1648,7 @@ body.is-locked { overflow: hidden; }
 
 /* الجوال: الهوية بعرض كامل، و«روابط» و«للتواصل» جنباً إلى جنب بدل
    عمود طويل يستهلك شاشة كاملة من التمرير. */
-.footer__grid { grid-template-columns: 1fr 1fr; }
+.footer__grid { grid-template-columns: 2fr 3fr; }
 .footer__grid > :first-child { grid-column: 1 / -1; }
 
 @media (min-width: 768px) {
@@ -1659,6 +1665,8 @@ body.is-locked { overflow: hidden; }
   min-height: 44px; /* روابط الفوتر أهداف لمس أيضاً */
   color: var(--muted);
   font-size: 18px;
+  min-width: 0;
+  overflow-wrap: anywhere; /* البريد الطويل يلتفّ بدل أن يوسّع عموده على الجوال */
 }
 
 /* بند نصّي لا رابط (السجل التجاري): كان <span> بأنماط مضمّنة وحجم 15px،
