@@ -10,6 +10,11 @@
 <meta name="theme-color" content="#faf7f3" media="(prefers-color-scheme: light)">
 
 <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<!-- iOS لا يقرأ SVG ولا يحترم الشفافية (يضعها على أسود)، فالأيقونة PNG
+     بخلفية فاتحة مصمتة — لا شفافية. -->
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 
 <!-- ⚠️ عند ربط الدومين: بدّل https://rustic-website-rho.vercel.app في هذه الكتلة كلها
      وفي sitemap.xml وrobots.txt. الروابط هنا يجب أن تكون مطلقة —
