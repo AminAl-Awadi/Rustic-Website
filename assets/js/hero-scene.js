@@ -24,6 +24,7 @@
   const hero = document.getElementById("hero");
   const canvas = document.getElementById("heroCanvas");
   const content = hero && hero.querySelector(".hero__content");
+  const scrim = hero && hero.querySelector(".hero__scrim");
   if (!hero || !canvas) return;
 
   const ctx = canvas.getContext("2d", { alpha: false });
@@ -101,6 +102,8 @@
       content.style.opacity = String(1 - fade);
       content.style.transform = "translateY(" + -fade * 28 + "px)";
       content.style.pointerEvents = fade > 0.9 ? "none" : "";
+      // الحجاب موجود لحماية النص فقط — ينسحب معه فتظهر اللقطة الأخيرة صافية
+      if (scrim) scrim.style.opacity = String(1 - fade);
     }
   }
 
