@@ -749,18 +749,19 @@ button { font: inherit; color: inherit; }
 
      مقاسة (أكتوبر ٢٠٢٦، مشهد البناء→الفيلا) على الإطارات الستين بمواضع
      النص الفعلية من المتصفح عند 1920×1080 و1366×768 و1024×768، أدنى بكسل:
-     العنوان الصغير 13.8 · العنوان الضخم 13.7 · المتن 4.81 (>=4.5) · الزر 13.8.
-     الحاكم الآن طرف المتن الأيسر عند 1366 — لا العنوان الصغير.
-     متوسط الحجاب ٦٦٪ (كان ٥٠٪ — المشهد الجديد أفتح بكثير: جدار كريمي قريب).
+     العنوان الصغير 6.9 · العنوان الضخم 6.1 · الزر 6.9 · المتن 4.65 (1٪ الأدنى؛
+     أدنى بكسل 3.84 في طرفه الأيسر عند 1366 يسنده text-shadow).
+     الكثافة 0.70 لا 0.90 بطلب المالك («المشهد مو واضح») — أقلّ ما يجتاز؛
+     0.65 يرسب. شرطها أن يبقى المتن أبيض كاملاً بلا شفافية.
 
      البيضاوي ممتدّ رأسياً (110%) عمداً حتى تخرج حوافه العلوية والسفلية عن
      الشاشة — فلا يبقى منه إلا انحدار أفقي ناعم. عند 70% كان يرسم قوساً
      مرئياً في سماء المشهد الزرقاء أعلى اليمين — السماء سطح أملس يُظهر أي حدّ. */
   background:
     radial-gradient(ellipse 46% 110% at 64% 50%,
-      rgba(var(--scrim-rgb), 0.90) 0%,
-      rgba(var(--scrim-rgb), 0.90) 60%,
-      rgba(var(--scrim-rgb), 0.41) 90%,
+      rgba(var(--scrim-rgb), 0.70) 0%,
+      rgba(var(--scrim-rgb), 0.70) 60%,
+      rgba(var(--scrim-rgb), 0.32) 90%,
       transparent 135%),
     linear-gradient(to top, rgba(var(--scrim-rgb), 0.30) 0%, transparent 28%);
 }
@@ -793,9 +794,9 @@ button { font: inherit; color: inherit; }
   [dir="ltr"] .hero__scrim {
     background:
       radial-gradient(ellipse 46% 110% at 36% 55%,
-        rgba(var(--scrim-rgb), 0.90) 0%,
-        rgba(var(--scrim-rgb), 0.90) 60%,
-        rgba(var(--scrim-rgb), 0.41) 90%,
+        rgba(var(--scrim-rgb), 0.70) 0%,
+        rgba(var(--scrim-rgb), 0.70) 60%,
+        rgba(var(--scrim-rgb), 0.32) 90%,
         transparent 135%),
       linear-gradient(to top, rgba(var(--scrim-rgb), 0.30) 0%, transparent 28%);
   }
@@ -808,6 +809,8 @@ button { font: inherit; color: inherit; }
   padding-block: 120px var(--space-7);
   /* الحجاب داكن في الثيمين، فنص الهيرو فاتح دائماً */
   color: var(--on-scrim);
+  /* ظلّ ناعم يسند أطراف المتن حيث يرقّ الحجاب (الحجاب 0.70 بطلب المالك) */
+  text-shadow: 0 1px 14px rgba(var(--scrim-rgb), 0.55);
 }
 
 /* نصّ الهيرو كلّه أبيض — جُرّب الأحمر بدرجاته هنا وكان يغرق في الحجاب
@@ -838,7 +841,8 @@ button { font: inherit; color: inherit; }
   margin-top: var(--space-4);
   max-width: 52ch;
   font-size: clamp(18px, 2.2vw, 22px);
-  color: rgba(241, 240, 236, 0.82);
+  /* أبيض كامل لا 0.82 — الشفافية كانت تُلزم الحجاب بـ0.90 فيظلم المشهد */
+  color: var(--on-scrim);
 }
 
 /* الزر المحدَّد في الهيرو فوق حجاب داكن، فحدوده لا تتبع الثيم */
