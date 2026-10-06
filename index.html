@@ -262,6 +262,21 @@
       نغطي دورة العمل كاملة، فلا تحتاج للتنسيق بين أكثر من مقاول.
     </p>
 
+    <!-- فيلم الخدمات: نظرة عامة بنفس ترتيب البطاقات تحته. نصوصه عربية،
+         فيُخفى في الإنجليزية (CSS). يعمل حين يظهر ويتوقف حين يخرج —
+         motion.js. -->
+    <figure class="svc-film" data-reveal>
+      <video class="svc-film__video" src="assets/media/services.mp4"
+             poster="assets/img/services-poster.jpg"
+             width="1424" height="720" muted loop playsinline preload="none"
+             aria-label="عرض متحرك للخدمات الست على واجهة مبنى" data-i18n-attr="aria-label" data-i18n="a11y.film"></video>
+      <button class="svc-film__toggle" type="button" aria-pressed="false"
+              aria-label="إيقاف العرض المتحرك مؤقتاً" data-i18n-attr="aria-label" data-i18n="a11y.filmToggle">
+        <svg class="svc-film__icon--pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="svc-film__icon--play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+      </button>
+    </figure>
+
     <div class="swatches">
 
       <article class="swatch" data-reveal>

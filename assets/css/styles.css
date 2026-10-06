@@ -972,6 +972,48 @@ button { font: inherit; color: inherit; }
   margin-top: var(--space-7);
 }
 
+/* فيلم الخدمات — بين المقدمة والبطاقات. خلفيته رمادية فاتحة ثابتة (من
+   الفيلم نفسه)، فالإطار شعيرة تتبع الثيم لا سطح. */
+.svc-film {
+  position: relative;
+  margin: var(--space-6) 0 0;
+  border: 1px solid rgba(var(--fg-rgb), 0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #f1f1f1;
+}
+
+.svc-film__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1424 / 720;
+}
+
+/* الفيلم >5 ثوانٍ ويتحرك وحده، فزر الإيقاف إلزامي (WCAG 2.2.2) */
+.svc-film__toggle {
+  position: absolute;
+  inset-block-end: var(--space-3);
+  inset-inline-end: var(--space-3);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(var(--scrim-rgb), 0.72);
+  color: var(--on-scrim);
+  cursor: pointer;
+}
+.svc-film__toggle svg { width: 20px; height: 20px; }
+.svc-film__toggle:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.svc-film__icon--play { display: none; }
+.svc-film__toggle[aria-pressed="true"] .svc-film__icon--play { display: block; }
+.svc-film__toggle[aria-pressed="true"] .svc-film__icon--pause { display: none; }
+
+/* النصوص داخل الفيلم عربية — لا يُعرض للزائر الإنجليزي */
+[dir="ltr"] .svc-film { display: none; }
+
 @media (min-width: 640px)  { .swatches { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .swatches { grid-template-columns: repeat(3, 1fr); } }
 

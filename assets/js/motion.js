@@ -231,6 +231,44 @@
   }
 
   /* ======================================================================
+     فيلم الخدمات — يعمل حين يظهر ويتوقف حين يخرج (لا يستهلك المعالج
+     خارج الشاشة). مع «تقليل الحركة» لا يبدأ وحده، والزر يشغّله.
+     إيقاف الزائر له يُحترم: لا يُستأنف تلقائياً بعدها.
+     ====================================================================== */
+  const film = document.querySelector(".svc-film__video");
+  const filmBtn = document.querySelector(".svc-film__toggle");
+
+  if (film && filmBtn) {
+    let userPaused = reduced;
+    let visible = false;
+
+    const sync = () => {
+      const paused = userPaused || !visible;
+      if (paused) film.pause();
+      else film.play().catch(() => {}); // الحظر التلقائي: يبقى الغلاف
+      filmBtn.setAttribute("aria-pressed", String(userPaused));
+    };
+
+    filmBtn.setAttribute("aria-pressed", String(userPaused));
+
+    filmBtn.addEventListener("click", () => {
+      userPaused = !userPaused;
+      visible = true; // الزر نُقر، فالفيلم على الشاشة حتماً
+      sync();
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        ([entry]) => { visible = entry.isIntersecting; sync(); },
+        { threshold: 0.35 }
+      ).observe(film);
+    } else {
+      visible = true;
+      sync();
+    }
+  }
+
+  /* ======================================================================
      5. تحقق النموذج + الإرسال عبر واتساب
      ====================================================================== */
   const form = document.getElementById("quoteForm");
