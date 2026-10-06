@@ -17,7 +17,7 @@
   /* ⚠️ الإطارات مخزّنة سنة كاملة (immutable في vercel.json) بنفس أسمائها،
      فعند تبديل المشهد ارفع FRAMES_V هنا وفي preload داخل index.html —
      وإلا رأى الزائر السابق المشهد القديم. */
-  const FRAMES_V = 2;
+  const FRAMES_V = 3;
   const FRAME_PATH = (i) =>
     "assets/frames/f" + String(i + 1).padStart(3, "0") + ".jpg?v=" + FRAMES_V;
 

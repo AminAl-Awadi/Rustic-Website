@@ -36,7 +36,7 @@ assets/js/i18n.js          ⚠️ بيانات المؤسسة + نصوص الل�
 assets/js/coverflow.js     معرض الأعمال ثلاثي الأبعاد
 assets/js/hero-scene.js    مشهد الهيرو المرتبط بالتمرير
 assets/js/motion.js        باقي التفاعل + GSAP
-assets/frames/f001..f060   إطارات مشهد الهيرو (٣ م.ب)
+assets/frames/f001..f060   إطارات مشهد الهيرو (1920، ~٧ م.ب)
 assets/img/logo.svg        الشعار (إعادة رسم تقريبية)
 assets/video/              غير مستخدم — مصدر فقط
 README.md                  دليل التعديل للمالك
@@ -89,7 +89,7 @@ README.md                  دليل التعديل للمالك
 
 **لتغيير المشهد:**
 ```bash
-ffmpeg -i new.mp4 -vf "fps=6,scale=1280:-2" -q:v 8 assets/frames/f%03d.jpg
+ffmpeg -i new.mp4 -vf "fps=6,scale=1920:-2:flags=lanczos,unsharp=5:5:0.6:5:5:0" -q:v 5 assets/frames/f%03d.jpg
 ```
 ثم عدّل `FRAME_COUNT` في `hero-scene.js` و`.hero { height }` بمعدل `16vh` لكل ثانية.
 **وارفع `FRAMES_V`** في `hero-scene.js` و`?v=` في `preload` داخل `index.html` — الإطارات مخزّنة سنة (`immutable`) بنفس أسمائها، فبدونه يرى الزائر السابق المشهد القديم. **ثم أعد قياس الحجاب** (أدناه).
