@@ -231,29 +231,24 @@
   }
 
   /* ======================================================================
-     فيلم الخدمات — يعمل حين يظهر ويتوقف حين يخرج (لا يستهلك المعالج
-     خارج الشاشة). مع «تقليل الحركة» لا يبدأ وحده، والزر يشغّله.
-     إيقاف الزائر له يُحترم: لا يُستأنف تلقائياً بعدها.
+     فيلم الخدمات — يعمل تلقائياً حين يظهر ويتوقف حين يخرج (لا يستهلك
+     المعالج خارج الشاشة). بلا زر وبلا استثناء لـ«تقليل الحركة» — بقرار
+     المالك. النقر عليه يوقفه/يستأنفه (بديل خفي للزر المحذوف).
      ====================================================================== */
   const film = document.querySelector(".svc-film__video");
-  const filmBtn = document.querySelector(".svc-film__toggle");
 
-  if (film && filmBtn) {
-    let userPaused = reduced;
+  if (film) {
+    let userPaused = false;
     let visible = false;
 
     const sync = () => {
-      const paused = userPaused || !visible;
-      if (paused) film.pause();
+      if (userPaused || !visible) film.pause();
       else film.play().catch(() => {}); // الحظر التلقائي: يبقى الغلاف
-      filmBtn.setAttribute("aria-pressed", String(userPaused));
     };
 
-    filmBtn.setAttribute("aria-pressed", String(userPaused));
-
-    filmBtn.addEventListener("click", () => {
+    film.addEventListener("click", () => {
       userPaused = !userPaused;
-      visible = true; // الزر نُقر، فالفيلم على الشاشة حتماً
+      visible = true;
       sync();
     });
 
