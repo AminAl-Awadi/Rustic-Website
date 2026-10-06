@@ -246,6 +246,18 @@
       else film.play().catch(() => {}); // الحظر التلقائي: يبقى الغلاف
     };
 
+    // نسخة لكل لغة — المصدر يُبدَّل قبل التشغيل (preload="none" فلا يُحمَّل
+    // العربي عبثاً لزائر إنجليزي)
+    const setLangSource = (lang) => {
+      const src = film.dataset["src" + (lang === "en" ? "En" : "Ar")];
+      if (!src || film.getAttribute("src") === src) return;
+      film.poster = film.dataset["poster" + (lang === "en" ? "En" : "Ar")];
+      film.src = src;
+      sync();
+    };
+    setLangSource(document.documentElement.lang);
+    document.addEventListener("lawn:langchange", (e) => setLangSource(e.detail.lang));
+
     film.addEventListener("click", () => {
       userPaused = !userPaused;
       visible = true;

@@ -1013,7 +1013,6 @@ button { font: inherit; color: inherit; }
   :root:not([data-theme="dark"]) .svc-film__video { filter: none; mix-blend-mode: multiply; }
 }
 
-[dir="ltr"] .svc-film { display: none; }
 
 @media (min-width: 640px)  { .swatches { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .swatches { grid-template-columns: repeat(3, 1fr); } }

@@ -262,12 +262,14 @@
       نغطي دورة العمل كاملة، فلا تحتاج للتنسيق بين أكثر من مقاول.
     </p>
 
-    <!-- فيلم الخدمات: نظرة عامة بنفس ترتيب البطاقات تحته. نصوصه عربية،
-         فيُخفى في الإنجليزية (CSS). يعمل حين يظهر ويتوقف حين يخرج —
+    <!-- فيلم الخدمات: نظرة عامة بنفس ترتيب البطاقات تحته. نسخة لكل لغة
+         (data-src-*)، يبدّلها motion.js مع اللغة. يعمل حين يظهر ويتوقف حين يخرج —
          motion.js. بلا data-reveal عمداً: تحويل الكشف يعزل mix-blend-mode. -->
     <figure class="svc-film">
       <video class="svc-film__video" src="assets/media/services.mp4?v=4"
              poster="assets/img/services-poster.jpg?v=4"
+             data-src-ar="assets/media/services.mp4?v=4" data-poster-ar="assets/img/services-poster.jpg?v=4"
+             data-src-en="assets/media/services-en.mp4?v=1" data-poster-en="assets/img/services-poster-en.jpg?v=1"
              width="1920" height="1080" muted loop playsinline preload="none"
              aria-label="عرض متحرك للخدمات الست على واجهة مبنى" data-i18n-attr="aria-label" data-i18n="a11y.film"></video>
     </figure>
