@@ -992,7 +992,18 @@ button { font: inherit; color: inherit; }
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 1424 / 720;
+  aspect-ratio: 16 / 9;
+  /* حواف الفيلم تذوب تدريجياً (شريط رفيع لا بيضاوي — شريط الأسماء أسفله
+     يمتد بعرض الإطار تقريباً) — خلفيته متدرّجة (208–250) لا بيضاء، فبلا
+     هذا يظهر حدّه مستطيلاً خفيفاً. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 2%, #000 98%, transparent),
+    linear-gradient(to bottom, transparent, #000 3%, #000 97%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 2%, #000 98%, transparent),
+    linear-gradient(to bottom, transparent, #000 3%, #000 97%, transparent);
+  mask-composite: intersect;
   filter: invert(1) hue-rotate(180deg);
   mix-blend-mode: screen;
 }
