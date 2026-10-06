@@ -14,8 +14,12 @@
   "use strict";
 
   const FRAME_COUNT = 60;
+  /* ⚠️ الإطارات مخزّنة سنة كاملة (immutable في vercel.json) بنفس أسمائها،
+     فعند تبديل المشهد ارفع FRAMES_V هنا وفي preload داخل index.html —
+     وإلا رأى الزائر السابق المشهد القديم. */
+  const FRAMES_V = 2;
   const FRAME_PATH = (i) =>
-    "assets/frames/f" + String(i + 1).padStart(3, "0") + ".jpg";
+    "assets/frames/f" + String(i + 1).padStart(3, "0") + ".jpg?v=" + FRAMES_V;
 
   const hero = document.getElementById("hero");
   const canvas = document.getElementById("heroCanvas");
